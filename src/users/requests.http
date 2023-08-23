@@ -3,12 +3,27 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "asdf@g.com",
-    "password": "test"
+    "email": "test@test.com",
+    "password": "12345"
 }
 
+### Sign in as existing user
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "12345"
+}
+
+### Get the currently signed in user
+Get http://localhost:3000/auth/whoami
+
+### Sign out
+POST http://localhost:3000/auth/signout
+
 ### Find a particular user with given ID
-GET http://localhost:3000/auth/3
+GET http://localhost:3000/auth/5
 
 ### Find all users with given email
 GET http://localhost:3000/auth?email=asdf@g.com
@@ -16,7 +31,7 @@ GET http://localhost:3000/auth?email=asdf@g.com
 ### Remove a particular user with given ID
 DELETE http://localhost:3000/auth/3
 
-###Update a user
+### Update a user
 PATCH http://localhost:3000/auth/4
 Content-Type: application/json
 
@@ -24,3 +39,9 @@ Content-Type: application/json
     "email": "asdf@g.op",
     "password": "testingggg"
 }
+
+### Set a color
+GET http://localhost:3000/auth/colors/red
+
+### Get a color
+GET http://localhost:3000/auth/colors
