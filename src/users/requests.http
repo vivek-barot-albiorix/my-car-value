@@ -3,8 +3,9 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "test@test.comm",
-    "password": "12345"
+    "email": "test2@test.com",
+    "password": "12345",
+    "isAdmin": true
 }
 
 ### Sign in as existing user
@@ -12,7 +13,7 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-    "email": "test@test.com",
+    "email": "test@test.comm",
     "password": "12345"
 }
 
@@ -23,7 +24,7 @@ Get http://localhost:3000/auth/whoami
 POST http://localhost:3000/auth/signout
 
 ### Find a particular user with given ID
-GET http://localhost:3000/auth/5
+GET http://localhost:3000/auth/1
 
 ### Find all users with given email
 GET http://localhost:3000/auth?email=asdf@g.com

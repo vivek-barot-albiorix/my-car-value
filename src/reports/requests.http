@@ -1,0 +1,24 @@
+### Create report
+POST http://localhost:3000/reports/create
+Content-Type: application/json
+
+{
+    "price": 150000,
+    "make": "hyundai",
+    "model": "i10",
+    "year": 2005,
+    "lng": 0,
+    "lat": 0,
+    "mileage": 20000
+}
+
+### Approve an existing report
+PATCH http://localhost:3000/reports/approve/2
+Content-Type: application/json
+
+{
+    "approved": true
+}
+
+### Get an estimate for an existing vehicle
+GET http://localhost:3000/reports?make=hyundai&model=i10a&lng=0&lat=0&mileage=2000&year=2025

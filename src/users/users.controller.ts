@@ -28,32 +28,19 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
-  // For the understanding purpose
-  @Get('/colors/:color')
-  setColor(@Param('color') color: string, @Session() session: any) {
-    session.color = color;
-  }
-
-  // For the understanding purpose
-  @Get('/colors')
-  getColor(@Session() session: any) {
-    return session.color;
-  }
-
   @Get('/whoami')
   @UseGuards(AuthGuard)
   whoAmI(@CurrentUser() user: User) {
     return user;
   }
 
-  @Post('/signout')
-  signOut(@Session() session: any) {
-    session.userId = null;
-  }
-
   @Post('/signup')
   async createUser(@Body() body: CreateUserDto, @Session() session: any) {
-    const user = await this.authService.signup(body.email, body.password);
+    const user = await this.authService.signup(
+      body.email,
+      body.password,
+      body.isAdmin,
+    );
     session.userId = user.id;
     return user;
   }
@@ -63,6 +50,11 @@ export class UsersController {
     const user = await this.authService.signin(body.email, body.password);
     session.userId = user.id;
     return user;
+  }
+
+  @Post('/signout')
+  signOut(@Session() session: any) {
+    session.userId = null;
   }
 
   @Get('/:id')
